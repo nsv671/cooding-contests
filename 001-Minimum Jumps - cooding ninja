@@ -1,0 +1,26 @@
+public class Solution  {
+    public static int minimumJumps(int x, int y) {
+        // Write your code here.
+        //if we are at origin the there is no jump required
+        if(x==0 && y==0)
+            return 0;
+
+        //if we are at any axis (i.e. in (x,0) or (0,y) then in 1 jump we can arrive at the destination
+        if(x==0 || y==0)
+            return 1;
+
+        //HCF storing
+        int commonDivisor = hcf(x,y);
+
+        return (x/commonDivisor) + (y/commonDivisor);
+
+    }
+
+    //calculating hightest commom factor of 2 number
+    static int hcf(int x, int y){
+        if(y==0)
+            return x;
+        else
+            return hcf(y, x%y);
+    }
+}
